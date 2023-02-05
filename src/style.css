@@ -1,0 +1,143 @@
+@charset "utf-8";
+@import url("https://fonts.googleapis.com/css2?family=Lilita+One&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Russo+One&display=swap");
+
+*,
+::before,
+::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  text-decoration: none;
+  border: none;
+}
+
+:root {
+  --font1: "Lilita One", cursive;
+  --font2: "Russo One", sans-serif;
+  --color1: #defcf9;
+  --color2: #85cdfd;
+  --color3: #3c84ab;
+  --color4: #362fd9;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+body {
+  min-height: 100vh;
+  font-family: var(--font2);
+}
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  background: var(--color2);
+  min-height: 100vh;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 50vw;
+  height: 10vh;
+}
+
+.header > h1 {
+  text-align: center;
+  font-size: 5rem;
+  font-family: var(--font1);
+  font-weight: 400;
+}
+
+.content {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+  width: 50vw;
+  height: 90vh;
+  grid-gap: 2rem;
+  padding: 2rem;
+}
+
+.card_wrapper {
+  border-radius: 3rem;
+  height: 100%;
+  width: 100%;
+  position: relative;
+  transition: all 1s ease;
+  transform-style: preserve-3d;
+  -webkit-transform-style: preserve-3d;
+}
+
+.card_front,
+.card_back {
+  font-size: 3rem;
+  border-radius: 3rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: inherit;
+  height: inherit;
+  position: absolute;
+  backface-visibility: hidden;
+  -moz-backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+
+.card_front {
+  color: var(--color1);
+  background: var(--color4);
+  z-index: 2;
+}
+
+.card_back {
+  color: #000;
+  transform: rotateY(180deg);
+  background: var(--color3);
+  z-index: 1;
+}
+
+.cards:hover .card_wrapper {
+  transform: rotateY(180deg);
+}
+
+/* <> -------------------------------------------------- Media Queries --------------------------------------------------*/
+
+@media only screen and (max-width: 1199px) {
+  .header > h1 {
+    font-size: 3rem;
+  }
+  .content {
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
+  }
+  .cards:last-child {
+    grid-column: 1/-1;
+  }
+  .card_front,
+  .card_back {
+    font-size: 2.5rem;
+  }
+}
+
+@media only screen and (max-width: 991px) {
+  header > h1 {
+    font-size: 2.5rem;
+  }
+
+  .content {
+    grid-template-columns: repeat(1, 1fr);
+    grid-template-rows: repeat(9, 1fr);
+  }
+
+  .card_front,
+  .card_back {
+    font-size: 2.5rem;
+  }
+}
