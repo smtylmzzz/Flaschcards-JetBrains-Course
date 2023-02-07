@@ -125,6 +125,21 @@ a {
   transform: rotateY(180deg);
 }
 
+.card_wrapper::before {
+  content: var(--flag);
+  overflow: hidden;
+  font-size: 3.5rem;
+  text-align: center;
+  width: 60px;
+  height: 60px;
+  position: absolute;
+  z-index: 5;
+  left: 50%;
+  top: 25%;
+  transform: translate(-50%, -50%);
+  backface-visibility: hidden;
+}
+
 /* <> -------------------------------------------------- Media Queries --------------------------------------------------*/
 
 @media only screen and (max-width: 1199px) {
@@ -142,6 +157,10 @@ a {
   .card_back {
     font-size: 2.5rem;
   }
+  .card_wrapper::before{
+    width: 40px;
+    height: 40px;
+  }
 }
 
 @media only screen and (max-width: 991px) {
@@ -158,5 +177,9 @@ a {
   .card_front,
   .card_back {
     font-size: 2.5rem;
+  }
+  .card_wrapper::before{
+    height: 40px;
+    width: 40px;
   }
 }
